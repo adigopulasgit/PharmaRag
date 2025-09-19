@@ -1,0 +1,32 @@
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+*.code-workspace
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+.env.*
+
+# Logs / artifacts
+app/logs/*
+!app/logs/.gitkeep
+
+# Streamlit
+.streamlit/
+
+# Notebooks
+.ipynb_checkpoints/
+
+# Build / cache
+dist/
+build/
+
+# Optional: ignore large local datasets (track a sample instead)
+# comment this out if you WANT to version data
+# app/data/*.csv
+# app/data/*.parquet

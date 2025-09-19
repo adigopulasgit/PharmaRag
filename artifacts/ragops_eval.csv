@@ -1,0 +1,2 @@
+ts,question,latency_ms,docs_used,model,answer_len
+2025-09-19T18:18:28.903111+00:00,binding db data,28727,"?,?,?,?,?",ollama/llama3:8b,1040
