@@ -6,3 +6,11 @@ data/processed/
 *.pyc
 .DS_Store
 
+# Ignore large files
+data/*
+faiss_indexes/*
+logs/*
+__pycache__/
+*.pyc
+.env
+.ipynb_checkpoints/
