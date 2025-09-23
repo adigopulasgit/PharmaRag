@@ -14,3 +14,10 @@ __pycache__/
 *.pyc
 .env
 .ipynb_checkpoints/
+# Large data
+data/*
+*.csv
+*.tab
+*.tsv
+*.parquet
+*.sdf
