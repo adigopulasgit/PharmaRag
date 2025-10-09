@@ -3,7 +3,7 @@ import requests
 import time
 from typing import Dict
 
-from app.retriever.retriever import retrieve  # make sure this exists
+from app.retriever import retrieve  # make sure this exists
 from app.llm.context_builders import format_admet, format_corpus_hits
 from app.llm.prompt import SYSTEM_PROMPT, build_user_prompt
 
