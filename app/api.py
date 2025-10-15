@@ -32,8 +32,6 @@ def chat(inp: ChatIn):
     retrieved = retrieve(
         inp.message,
         k=10,
-        use_hybrid=True,
-        use_cross_encoder=False,
         use_web=True,
         fallback_to_llm=inp.allow_fallback,
     )

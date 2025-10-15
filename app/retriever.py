@@ -21,6 +21,10 @@ from app.ingestion.web_ingestor import (
     query_pubchem_by_name,
     query_tdc_summary,
 )
+from app.ingestion.live_ingestor import get_live_results
+def _web_retrieve(question, max_items=25):
+    return get_live_results(question, max_items)
+
 
 TDC_KEYS = ["herg", "tox21", "caco2", "solubility", "lipophilicity"]
 SMILES_CHARS = set(list("=#[]()@+-\\/123456789BrClNOPSF"))
