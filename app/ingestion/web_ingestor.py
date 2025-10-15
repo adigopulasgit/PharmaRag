@@ -16,9 +16,9 @@ from functools import lru_cache
 
 # ---------- resilient session ----------
 _session = requests.Session()
-retries = Retry(total=3, backoff_factor=2, status_forcelist=[429, 500, 502, 503, 504])
+retries = Retry(total=3, backoff_factor=1, status_forcelist=[429, 500, 502, 503, 504])
 _session.mount("https://", HTTPAdapter(max_retries=retries))
-DEFAULT_TIMEOUT = 20
+DEFAULT_TIMEOUT = 30
 
 def _wrap(text: str, dataset: str, _id: str = "", score: float = 1.0) -> Dict:
     return {"text": text, "score": float(score), "meta": {"dataset": dataset, "id": _id or dataset}}
