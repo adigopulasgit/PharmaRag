@@ -1,6 +1,8 @@
 import os, sys, re
 import streamlit as st
 
+os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
+
 # --- Path setup ---
 CURRENT_DIR = os.path.dirname(__file__)
 ROOT_DIR = os.path.dirname(CURRENT_DIR)
@@ -157,12 +159,18 @@ if prompt:
             _render_smiles_gallery(smiles_pairs)
 
         # --- Show supporting evidence ---
-        if ev:
+        if grounded and ev:
             st.markdown("**Supporting evidence (top):**")
-            for i, e in enumerate(ev[:3], 1):
-                src = (e.get("meta") or {}).get("dataset", "")
-                txt = (e.get("text") or "").replace("\n", " ")
-                st.markdown(f"- **[{src}]** {txt[:200]}{'…' if len(txt) > 200 else ''}")
+            shown = set()
+            for i, e in enumerate(ev, 1):
+                txt = (e.get("text") or "").strip().replace("\n", " ")
+                if not txt or txt in shown:
+                    continue
+                shown.add(txt)
+                src = (e.get("meta") or {}).get("dataset","")
+                st.markdown(f"- **[{src}]** {txt[:200]}{'…' if len(txt)>200 else ''}")
+                if len(shown) >= 3:
+                    break
 
         # --- Suggested follow-ups ---
         suggestions = _followups(prompt, dsets)
